@@ -1,0 +1,56 @@
+{
+  "projectInfo": {
+    "status": "EP.02 ACTIVE",
+    "lastPush": "01:12 AM",
+    "phase": "EP.02 BUILDING PHASE",
+    "description": "Wingcraft 해커톤은 2인의 엔지니어가 기술적 제약을 넘어 아이디어를 빠르게 검증하고, 고집적 빌딩을 통해 실질적인 프로토타입을 실현하는 창의적 엔지니어링 세션입니다."
+  },
+  "members": [
+    { "name": "다훈", "role": "CEO & Engineer", "email": "flexxiblethinking@gmail.com" },
+    { "name": "효진", "role": "Marketer & Engineer", "email": "rosiewingit@gmail.com" }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "round": "EP.01: FIRST STEP",
+      "date": "2026.03.14 (토)",
+      "status": "COMPLETED",
+      "statusBadge": "ARCHIVED",
+      "badgeClass": "completed",
+      "link": "history/round1.html",
+      "invitations": {
+        "flexxiblethinking@gmail.com": "ACCEPTED",
+        "rosiewingit@gmail.com": "ACCEPTED"
+      },
+      "details": "STATUS: COMPLETED\nDATE: 2026.03.14 (토)\nTIME: 11:30 START\nLOCATION: 망포역 김성민커피\nPARTICIPANTS: 다훈, 효진\nNOTES: 첫 번째 해커톤 세션. 개발 환경 셋업 및 프로토타입 v0.1 빌드 완료."
+    },
+    {
+      "id": 2,
+      "round": "EP.02: BRAND NEW IDEA",
+      "date": "2026.05.16 (토)",
+      "status": "LIVE",
+      "statusBadge": "LIVE",
+      "badgeClass": "live",
+      "link": "history/round2.html",
+      "invitations": {
+        "flexxiblethinking@gmail.com": "SENT",
+        "rosiewingit@gmail.com": "SENT"
+      },
+      "details": "STATUS: ACTIVE / LIVE\nDATE: 2026.05.16 (토)\nLOCATION: 수원 망포역\nPARTICIPANTS: 다훈, 효진\nINVITATION: SENT (flexxiblethinking@gmail.com, rosiewingit@gmail.com)\nCHECK-IN: MANUAL CONFIRMATION\nTOPIC: 신규 아이디어 도출\nNOTES: 실시간 터미널 인터페이스 및 자동화 로직 구현 중."
+    },
+    {
+      "id": 3,
+      "round": "EP.03: COMING SOON",
+      "date": "COMING SOON",
+      "status": "UPCOMING",
+      "statusBadge": "SOON",
+      "badgeClass": "upcoming",
+      "link": null,
+      "invitations": {
+        "flexxiblethinking@gmail.com": "PENDING",
+        "rosiewingit@gmail.com": "PENDING"
+      },
+      "details": "STATUS: UPCOMING\nDATE: COMING SOON\nINVITATION: SENT (flexxiblethinking@gmail.com, rosiewingit@gmail.com)\nCHECK-IN: MANUAL CONFIRMATION\nNOTES: 3회차 해커톤 준비 중입니다. 새로운 도전을 기대해 주세요."
+    }
+  ]
+}

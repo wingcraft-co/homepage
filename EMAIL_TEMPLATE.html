@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { background-color: #050507; color: #f2f2f2; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 640px; margin: 40px auto; background-color: #101010; border: 1px solid #3d3a39; border-radius: 12px; overflow: hidden; }
+    .header { padding: 32px 30px 24px; border-bottom: 1px solid #3d3a39; text-align: center; }
+    .logo { color: #00d992; font-weight: 700; letter-spacing: 2px; font-size: 20px; text-transform: uppercase; }
+    .eyebrow { color: #8b949e; margin-top: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+    .content { padding: 36px 30px 40px; line-height: 1.7; }
+    .greeting { font-size: 18px; color: #ffffff; margin-bottom: 18px; font-weight: 600; }
+    .message { color: #b8b3b0; margin-bottom: 28px; font-size: 15px; }
+    .terminal-box { background-color: #000; padding: 20px; border-radius: 8px; border: 1px solid #3d3a39; border-left: 3px solid #00d992; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; margin-bottom: 24px; }
+    .terminal-line { color: #00d992; margin-bottom: 8px; font-size: 13px; }
+    .terminal-text { color: #f2f2f2; font-size: 13px; margin-bottom: 4px; }
+    .summary-box { margin-bottom: 32px; padding: 18px 20px; background: rgba(0, 217, 146, 0.05); border: 1px solid #3d3a39; border-radius: 8px; }
+    .summary-label { color: #8b949e; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .summary-text { color: #f2f2f2; font-size: 14px; }
+    .btn-container { text-align: center; margin-top: 32px; }
+    .btn { background-color: #101010; border: 1px solid #00d992; color: #2fd6a1 !important; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; letter-spacing: 1px; display: inline-block; }
+    .hint { color: #8b949e; font-size: 12px; text-align: center; margin-top: 14px; }
+    .footer { padding: 20px; text-align: center; color: #8b949e; font-size: 11px; border-top: 1px solid #3d3a39; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">WINGCRAFT HACK-HUB</div>
+      <div class="eyebrow">SESSION INVITE PAYLOAD</div>
+    </div>
+    <div class="content">
+      <div class="greeting">Hello, {{to_name}}</div>
+      <div class="message">
+        새로운 Wingcraft 해커톤 세션이 준비되었습니다. 아래 링크로 참여 여부를 확정해 주세요. 수락 후에는 세션 정보를 바로 확인할 수 있습니다.
+      </div>
+      
+      <div class="terminal-box">
+        <div class="terminal-line">$ wingcraft status --check-session</div>
+        <div class="terminal-text">SESSION_ID: {{round}}</div>
+        <div class="terminal-text">STATUS: DEPLOY_READY</div>
+        <div class="terminal-text">MESSAGE: {{message}}</div>
+        <div class="terminal-text">SQUAD_MODE: ACTIVE</div>
+      </div>
+
+      <div class="summary-box">
+        <div class="summary-label">What happens next</div>
+        <div class="summary-text">수락 링크를 열면 해당 회차의 초대 상태가 확정되고, 현재 세션 로그 화면으로 바로 이동합니다.</div>
+      </div>
+
+      <div class="btn-container">
+        <a href="{{link}}" class="btn">ACCEPT_SESSION_INVITE</a>
+        <div class="hint">If the button fails, open this link directly: {{link}}</div>
+      </div>
+    </div>
+    <div class="footer">
+      &copy; 2026 WINGCRAFT. EXECUTED BY 2-MAN SQUAD.
+    </div>
+  </div>
+</body>
+</html>

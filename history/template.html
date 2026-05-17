@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal - EP.XX TITLE</title>
+  <style>
+    :root {
+      --abyss-black: #050507;
+      --carbon-surface: #101010;
+      --emerald-signal: #00d992;
+      --warm-charcoal: #3d3a39;
+      --snow-white: #f2f2f2;
+      --steel-slate: #8b949e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--abyss-black);
+      color: var(--snow-white);
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .terminal-window {
+      width: 100%;
+      max-width: 900px;
+      height: 80vh;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid var(--warm-charcoal);
+      border-radius: 12px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      animation: windowOpen 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (max-width: 768px) {
+      .terminal-window { height: 90vh; }
+      .terminal-body { padding: 20px; font-size: 14px; }
+    }
+
+    @keyframes windowOpen {
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .terminal-header {
+      background: #323232;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      border-top-left-radius: 11px;
+      border-top-right-radius: 11px;
+      position: relative;
+    }
+
+    .traffic-lights {
+      display: flex;
+      gap: 8px;
+    }
+
+    .light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .red { background: #ff5f56; border: 0.5px solid #e0443e; }
+    .yellow { background: #ffbd2e; border: 0.5px solid #dea123; }
+    .green { background: #27c93f; border: 0.5px solid #1aab29; }
+
+    .terminal-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: var(--steel-slate);
+      font-weight: 500;
+    }
+
+    .terminal-body {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .prompt { color: var(--emerald-signal); margin-right: 10px; }
+    .command { color: var(--snow-white); }
+    .output { color: #dcdcdc; margin-top: 10px; margin-bottom: 20px; white-space: pre-wrap; }
+    
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 17px;
+      background: var(--emerald-signal);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .back-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--carbon-surface);
+      border: 1px solid var(--warm-charcoal);
+      color: var(--snow-white);
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-btn:hover {
+      border-color: var(--emerald-signal);
+      color: var(--emerald-signal);
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <div class="traffic-lights">
+        <div class="light red" onclick="location.href='../index.html'"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+      </div>
+      <div class="terminal-title">wingcraft — ep.xx_title.log — 80x24</div>
+    </div>
+    <div class="terminal-body" id="terminalContent"></div>
+  </div>
+
+  <a href="../index.html" class="back-btn">
+    <span>←</span> EXIT_TERMINAL
+  </a>
+
+  <script>
+    const content = document.getElementById('terminalContent');
+    
+    const details = `STATUS: COMPLETED / ACTIVE / UPCOMING
+DATE: 202X.XX.XX (요일)
+TIME: 11:30 START
+LOCATION: 장소 입력
+PARTICIPANTS: 다훈, 효진
+TOPIC: 이번 회차 주제 입력
+OUTCOME: 핵심 결과 한 줄 요약
+NOTES: 세션 메모 입력
+--------------------------------------------------
+[SYSTEM] Fetching session logs...
+[LOG] 11:30 AM - Kickoff
+[LOG] 01:30 PM - Main build checkpoint
+[LOG] 05:30 PM - Wrap-up
+[SYSTEM] Session EP.XX is archived.`;
+
+    async function startTerminal() {
+      const line1 = createLine();
+      line1.innerHTML = '<span class="prompt">user@wingcraft:~/hackathon$</span><span class="command"></span><span class="cursor"></span>';
+      content.appendChild(line1);
+      
+      const cmdSpan = line1.querySelector('.command');
+      
+      const cmdText = 'cat EP.XX_TITLE_LOG.md';
+      
+      for(let char of cmdText) {
+        cmdSpan.textContent += char;
+        await wait(50);
+      }
+      
+      line1.querySelector('.cursor').remove();
+      await wait(300);
+
+      const output = document.createElement('div');
+      output.className = 'output';
+      content.appendChild(output);
+      
+      const lines = details.split('\n');
+      for(let line of lines) {
+        output.textContent += line + '\n';
+        await wait(20);
+      }
+
+      const finalLine = createLine();
+      finalLine.innerHTML = '<span class="prompt">user@wingcraft:~/hackathon$</span><span class="cursor"></span>';
+      content.appendChild(finalLine);
+    }
+
+    function createLine() {
+      const div = document.createElement('div');
+      div.style.marginBottom = '5px';
+      return div;
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    window.onload = startTerminal;
+  </script>
+</body>
+</html>
